@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Zaida 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f3e5f5, #d1c4e9);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #8e24aa;
+      margin-top: 20px;
+    }
+
+    .boton-carta, .boton-final, button {
+      font-size: 1.2em;
+      background-color: #ba68c8;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #9c27b0;
+    }
+
+    .carta {
+      display: none;
+      max-width: 700px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      font-size: 1.2em;
+      color: #4a148c;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .pregunta {
+      display: none;
+      font-size: 1.6em;
+      color: #6a1b9a;
+      margin-top: 30px;
+    }
+
+    .buttons {
+      display: none;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .mensaje-final {
+      display: none;
+      font-size: 1.5em;
+      color: #4caf50;
+      animation: fadeIn 1s ease-in;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .flores {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .flores img {
+      position: absolute;
+      width: 80px;
+      animation: flotar 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes flotar {
+      from { transform: translateY(100vh) rotate(0deg); }
+      to { transform: translateY(-10vh) rotate(360deg); }
+    }
+
+    .audio-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    audio {
+      width: 300px;
+      border-radius: 20px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hola Zaida 💖</h1>
+
+  <div class="audio-container">
+    <audio controls autoplay loop>
+      <source src="Only.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio :(
+    </audio>
+  </div>
+
+  <button class="boton-carta" onclick="mostrarCarta()">Abrir carta 💌</button>
+
+  <div class="carta" id="carta">
+    <p>El día en que llegaste a mi vida (10/Junio/25), recuerdo haber pensado en no hablarte porque no pensaba en lo bonito que podía ser el conocerte.</p>
+    <p>Desde entonces, aunque nos falta mucho por conocernos, todo de ti me hace sentir especial y feliz, y estoy agradecido por cada día tenerte.</p>
+    <p>Y aunque quizás sea un poco rápido, hay algo que quiero preguntarte con todo mi corazón.</p>
+    <p>¿Estás lista para saberlo? </p>
+
+    <button class="boton-final" onclick="mostrarPregunta()">Estoy lista... 💕</button>
+  </div>
+
+  <div class="pregunta" id="pregunta">¿Quieres ser mi novia? 💖</div>
+
+  <div class="buttons" id="opciones">
+    <button onclick="mostrarMensaje()">Sí 🥰</button>
+    <button onclick="mostrarMensaje()">Claro que sí 💖</button>
+  </div>
+
+  <div class="mensaje-final" id="mensaje">¡Sabía que dirías que sí! 😍 (Más te vale)</div>
+
+  <div class="flores" id="flores"></div>
+
+  <script>
+    function mostrarCarta() {
+      document.getElementById('carta').style.display = 'block';
+      document.querySelector('.boton-carta').style.display = 'none';
+    }
+
+    function mostrarPregunta() {
+      document.getElementById('pregunta').style.display = 'block';
+      document.getElementById('opciones').style.display = 'flex';
+    }
+
+    function mostrarMensaje() {
+      document.getElementById('mensaje').style.display = 'block';
+      for (let i = 0; i < 20; i++) {
+        crearFlor();
+      }
+    }
+
+    function crearFlor() {
+      const flores = document.getElementById('flores');
+      const img = document.createElement('img');
+      const florAleatoria = Math.random() < 0.5 ? 'orquidea' : 'tulipan';
+      img.src = florAleatoria === 'orquidea'
+        ? 'https://png.pngtree.com/png-clipart/20230930/original/pngtree-white-cattleya-orchid-png-png-image_13019577.png'
+        : 'https://png.pngtree.com/png-clipart/20220124/original/pngtree-a-bunch-of-blooming-red-tulips-png-image_7198277.png';
+      img.style.left = Math.random() * 90 + 'vw';
+      img.style.top = Math.random() * 100 + 'vh';
+      flores.appendChild(img);
+      setTimeout(() => img.remove(), 60000);
+    }
+  </script>
+</body>
+</html>
