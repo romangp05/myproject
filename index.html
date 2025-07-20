@@ -141,6 +141,11 @@
   </div>
 
   <div class="mensaje-final" id="mensaje">¡Sabía que dirías que sí! 😍 (Más te vale)</div>
+  <div id="imagen-final" style="display: none; margin-top: 20px;">
+  <img src="ramoZai.png" 
+       alt="Imagen final" 
+       style="max-width: 300px; border-radius: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+</div>
 
   <div class="flores" id="flores"></div>
 
@@ -157,6 +162,7 @@
 
     function mostrarMensaje() {
       document.getElementById('mensaje').style.display = 'block';
+      document.getElementById('imagen-final').style.display = 'block';
       for (let i = 0; i < 20; i++) {
         crearFlor();
       }
